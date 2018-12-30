@@ -3,10 +3,13 @@
 Документ содержит описание процедур Банка по созданию новых пользователей Системы.
 
 == Процедура CreateUser
+[[CreateUser]]
+
+Процедура создает счет в Банке, устанавливает требуемые свойства.
 
 .Входные параметры
-- CurrencyCode: TCurrencyCode // код валюты
-- DestinationAccountProperties: TProperties // свойства счета
+    - CurrencyCode: TCurrencyCode // код валюты
+    - DestinationAccountProperties: TProperties // свойства счета
 
 .Возвращает
 - AccountKey: TAccountKey // номер созданного счета
@@ -17,18 +20,20 @@
 .Действия
 
 . Установить начальные значения для переменных: +
-ProcTime: TGMTDateTime - тривиальное значение +
-ProcResult: TProcResult - техническая ошибка +
-AccountKey: TAccountKey - тривиальное значение
+.. ProcTime: TGMTDateTime - тривиальное значение +
+.. ProcResult: TProcResult - техническая ошибка +
+.. AccountKey: TAccountKey - тривиальное значение +
+.. Account: TRealAccount - тривиальное значение
 
 . Получить текущее время GetGMTTime(ProcTime).
 В случае ошибки перейти к метке <<Отправка_результата>>
 
-. Создать запись счета при помощи процедуры <<CreateAccount>>, получив на выходе AccountKey.
+. Создать запись счета при помощи процедуры <<CreateAccount>>, получив на выходе Account.
 В случае ошибки перейти к метке <<Отправка_результата>>
 
 . Если параметр DestinationAccountProperties задан, то
-.. Запустить процедуру <<SetAccountProperties.adoc#SetAccountProperties, SetAccountProperties>>, передав ей на вход AccountKey, DestinationAccountProperties
+.. Запустить процедуру <<SetAccountProperties#SetAccountProperties>>,
+передав ей на вход AccountKey, DestinationAccountProperties
 и AccountProperties в качестве выходного параметра.
 .. Если произошла ошибка, то перейти к метке <<Отправка_результата>>
 
@@ -40,13 +45,42 @@ AccountKey: TAccountKey - тривиальное значение
 . действий
 . ...
 
+. Установить AccountSum = Account.GetAccountSum;
 . Установить ProcResult = Успех.
++
 
 [reftext="Отправка результата"]
-[[Отправка_результата]] Метка Отправка ответа
+[[Отправка_результата]]
+Метка Отправка результата::
 
 . Сформировать запись в истории операций.
 . Сделать запись в лог.
 . Отправить ответ.
 
 
+
+== Процедура CreateAccount
+[[CreateAccount]]
+
+Процедура создает запись в БД Счетов.
+
+.Входные параметры
+- ProcTime: TGMTDateTime // код валюты
+- CurrencyCode: TCurrencyCode // код валюты
+
+.Возвращает
+- Account: TRealAccount // объект счета
+- ProcResult: TProcResult // результат выполнения процедуры
+
+.Действия
+
+. Установить AccountKey = очередное значение номера счета.
+. Заблокировать возможно не существующую запись БД Счетов с ключом AccountKey.
+. Установить
+.. Account.CurrencyCode = CurrencyCode.
+.. Account.AccountKey = AccountKey.
+.. Account.Balance.StartTime = ProcTime.
+. Модифицировать и разблокировать запись БД Счетов, вызвав AccountDB.ModifyRecord(Account).
+    В случае неуспеха завершить выполнение процедуры.
+. Установить ProcResult = Успех.
+. Завершить выполнение процедуры.

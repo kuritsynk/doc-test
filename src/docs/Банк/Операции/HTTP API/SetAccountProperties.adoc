@@ -1,6 +1,7 @@
 = Документ SetAccountProperties
 
-== Процедура SetAccountProperties [[SetAccountProperties]]
+== Процедура SetAccountProperties
+[[SetAccountProperties]]
 
 .Входные параметры
 - AccountKey: TAccountKey // номер счета
@@ -13,3 +14,4 @@
 
 .Действия
 
+Выполняются действия
