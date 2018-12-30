@@ -1,8 +1,12 @@
-= Процедура CreateUser
+= Документ CreateUser
+
+Документ содержит описание процедур Банка по созданию новых пользователей Системы.
+
+== Процедура CreateUser
 
 .Входные параметры
 - CurrencyCode: TCurrencyCode // код валюты
-- AccountProperties: TProperties // свойства счета
+- DestinationAccountProperties: TProperties // свойства счета
 
 .Возвращает
 - AccountKey: TAccountKey // номер созданного счета
@@ -14,11 +18,35 @@
 
 . Установить начальные значения для переменных: +
 ProcTime: TGMTDateTime - тривиальное значение +
-ProcResult: TProcResult - техническая ошибка
+ProcResult: TProcResult - техническая ошибка +
+AccountKey: TAccountKey - тривиальное значение
 
 . Получить текущее время GetGMTTime(ProcTime).
-В случае ошибки перейти к метке <<Отправка ответа>>
+В случае ошибки перейти к метке <<Отправка_результата>>
 
+. Создать запись счета при помощи процедуры <<CreateAccount>>, получив на выходе AccountKey.
+В случае ошибки перейти к метке <<Отправка_результата>>
 
+. Если параметр DestinationAccountProperties задан, то
+.. Запустить процедуру <<SetAccountProperties.adoc#SetAccountProperties, SetAccountProperties>>, передав ей на вход AccountKey, DestinationAccountProperties
+и AccountProperties в качестве выходного параметра.
+.. Если произошла ошибка, то перейти к метке <<Отправка_результата>>
+
+. ...
+. здесь
+. ниже
+. много
+. разных
+. действий
+. ...
+
+. Установить ProcResult = Успех.
+
+[reftext="Отправка результата"]
+[[Отправка_результата]] Метка Отправка ответа
+
+. Сформировать запись в истории операций.
+. Сделать запись в лог.
+. Отправить ответ.
 
 

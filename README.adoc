@@ -19,7 +19,7 @@ git clone https://github.com/kuritsynk/doc-test.git
 
 == Полезные ссылки по AsciiDoc
 
-. http://asciidoc.org/index.html
-. Шпаргалка по AsciiDoc на русском - http://clipartmag.com/blog/asciidoc/
+. Сайт AsciiDoc: http://asciidoc.org/index.html
+. Шпаргалка по AsciiDoc: https://powerman.name/doc/asciidoc
 . Документация по AsciiDoctor - расширении AsciiDoc: https://asciidoctor.org/docs/
-* User manual по AsciiDoctor - https://asciidoctor.org/docs/user-manual/
+* User manual по AsciiDoctor: https://asciidoctor.org/docs/user-manual/

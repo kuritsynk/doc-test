@@ -1,0 +1,15 @@
+= Документ SetAccountProperties
+
+== Процедура SetAccountProperties [[SetAccountProperties]]
+
+.Входные параметры
+- AccountKey: TAccountKey // номер счета
+- DestinationAccountProperties: TProperties // свойства счета, которые необходимо установить
+
+.Возвращает
+- AccountKey: TAccountKey // номер счета
+- AccountProperties: TProperties // свойства счета
+- AccountSum: TPreciseSum // сумма на счете
+
+.Действия
+
