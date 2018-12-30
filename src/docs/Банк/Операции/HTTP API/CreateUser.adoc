@@ -1,4 +1,5 @@
 = Документ CreateUser
+:toc:
 
 Документ содержит описание процедур Банка по созданию новых пользователей Системы.
 
@@ -32,7 +33,7 @@
 В случае ошибки перейти к метке <<Отправка_результата>>
 
 . Если параметр DestinationAccountProperties задан, то
-.. Запустить процедуру <<SetAccountProperties#SetAccountProperties>>,
+.. Запустить процедуру <<SetAccountProperties#SetAccountProperties, SetAccountProperties>>,
 передав ей на вход AccountKey, DestinationAccountProperties
 и AccountProperties в качестве выходного параметра.
 .. Если произошла ошибка, то перейти к метке <<Отправка_результата>>
