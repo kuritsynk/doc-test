@@ -1,1 +1,24 @@
-#
+= Процедура CreateUser
+
+.Входные параметры
+- CurrencyCode: TCurrencyCode // код валюты
+- AccountProperties: TProperties // свойства счета
+
+.Возвращает
+- AccountKey: TAccountKey // номер созданного счета
+- CurrencyCode: TCurrencyCode // код валюты
+- AccountProperties: TProperties // свойства счета
+- AccountSum: TPreciseSum // сумма на счете
+
+.Действия
+
+. Установить начальные значения для переменных: +
+ProcTime: TGMTDateTime - тривиальное значение +
+ProcResult: TProcResult - техническая ошибка
+
+. Получить текущее время GetGMTTime(ProcTime).
+В случае ошибки перейти к метке <<Отправка ответа>>
+
+
+
+

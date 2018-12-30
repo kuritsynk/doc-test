@@ -1,16 +1,25 @@
-# Пример оформления документации в AsciiDoc
+= Пример оформления документации в AsciiDoc
 
-## Настройка локальной среды
+== Настройка локальной среды
 
 . Скачать и установить https://www.jetbrains.com/idea/download/[IntelliJ IDEA Community Edition].
 . При установке убедиться, что включен плагин для работы с Git.
 . Установить в IDEA плагин https://plugins.jetbrains.com/plugin/7391-asciidoc[AsciiDoc].
 . _Опционально._ Для проверки русской орфографии можно скачать и установить следующие словари:
-.. https://yadi.sk/d/HwQnqkZzvuPt7
-.. http://www.winedt.org/dict/ru.zip
+    .. https://yadi.sk/d/HwQnqkZzvuPt7
+    .. http://www.winedt.org/dict/ru.zip
++
+Скачанные файлы распаковать и добавить словари (*.dic) в Spell Checker IDEA (_File/Settings/Editor/Spelling..._).
 . Создать каталог для проекта с документацией и в нем выполнить команду для получения данных с сервера:
 +
 ```
 git clone https://github.com/kuritsynk/doc-test.git
 ```
 . Открыть в IDEA проект doc-test
+
+== Полезные ссылки по AsciiDoc
+
+. http://asciidoc.org/index.html
+. Шпаргалка по AsciiDoc на русском - http://clipartmag.com/blog/asciidoc/
+. Документация по AsciiDoctor - расширении AsciiDoc: https://asciidoctor.org/docs/
+* User manual по AsciiDoctor - https://asciidoctor.org/docs/user-manual/
