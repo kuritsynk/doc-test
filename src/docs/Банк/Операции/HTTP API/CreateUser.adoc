@@ -21,10 +21,10 @@
 .Действия
 
 . Установить начальные значения для переменных: +
-.. ProcTime: TGMTDateTime - тривиальное значение +
-.. ProcResult: TProcResult - техническая ошибка +
-.. AccountKey: TAccountKey - тривиальное значение +
-.. Account: TRealAccount - тривиальное значение
+ProcTime: TGMTDateTime - тривиальное значение +
+ProcResult: TProcResult - техническая ошибка +
+AccountKey: TAccountKey - тривиальное значение +
+Account: TRealAccount - тривиальное значение
 
 . Получить текущее время GetGMTTime(ProcTime).
 В случае ошибки перейти к метке <<Отправка_результата>>
